@@ -18,7 +18,7 @@ interface DataSource {
     fun updateUser(user: UserEntity): Completable
 }
 
-class DataSourceImp(private val dataBase: AppDataBase) : DataSource {
+class DataSourceImpl(private val dataBase: AppDataBase) : DataSource {
     override fun getAllUsers(): Flowable<List<UserEntity>> {
         return Flowable.just(dataBase.getUserDao().getAllUsers())
             .observeOn(AndroidSchedulers.mainThread())
